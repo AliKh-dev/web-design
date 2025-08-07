@@ -54,7 +54,9 @@ export const CartProvider = ({ children }) => {
     }
 
     try {
-      const updatedCart = await cartAPI.addToCart(productId, quantity);
+      const response = await cartAPI.addToCart(productId, quantity);
+      // Extract cart data from response (backend returns { message, cart })
+      const updatedCart = response.cart || response;
       setCart(updatedCart);
       // Calculate total quantity of all items
       const totalQuantity = updatedCart.items ? updatedCart.items.reduce((sum, item) => sum + item.quantity, 0) : 0;
@@ -70,7 +72,9 @@ export const CartProvider = ({ children }) => {
     if (!isAuthenticated) return;
 
     try {
-      const updatedCart = await cartAPI.updateCartItem(itemId, quantity);
+      const response = await cartAPI.updateCartItem(itemId, quantity);
+      // Extract cart data from response (backend returns { message, cart })
+      const updatedCart = response.cart || response;
       setCart(updatedCart);
       // Calculate total quantity of all items
       const totalQuantity = updatedCart.items ? updatedCart.items.reduce((sum, item) => sum + item.quantity, 0) : 0;
@@ -86,7 +90,9 @@ export const CartProvider = ({ children }) => {
     if (!isAuthenticated) return;
 
     try {
-      const updatedCart = await cartAPI.removeFromCart(itemId);
+      const response = await cartAPI.removeFromCart(itemId);
+      // Extract cart data from response (backend returns { message, cart })
+      const updatedCart = response.cart || response;
       setCart(updatedCart);
       // Calculate total quantity of all items
       const totalQuantity = updatedCart.items ? updatedCart.items.reduce((sum, item) => sum + item.quantity, 0) : 0;
@@ -102,7 +108,9 @@ export const CartProvider = ({ children }) => {
     if (!isAuthenticated) return;
 
     try {
-      const updatedCart = await cartAPI.clearCart();
+      const response = await cartAPI.clearCart();
+      // Extract cart data from response (backend returns { message, cart })
+      const updatedCart = response.cart || response;
       setCart(updatedCart);
       setCartItemCount(0);
       return updatedCart;

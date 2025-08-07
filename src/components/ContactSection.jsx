@@ -15,7 +15,7 @@ const ContactSection = () => {
     {
       icon: "bi bi-envelope",
       title: "ایمیل",
-      value: "info@coffeeshop.com"
+      value: "coffeeshop@gmail.com"
     }
   ];
 

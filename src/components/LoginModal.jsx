@@ -41,8 +41,8 @@ const LoginModal = ({ show, onClose, onSwitchToRegister }) => {
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">ورود به حساب کاربری</h5>
               <button type="button" className="btn-close" onClick={onClose}></button>
+              <h5 className="modal-title">ورود به حساب کاربری</h5>
             </div>
             <div className="modal-body">
               <form onSubmit={handleSubmit}>

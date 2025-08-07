@@ -18,7 +18,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="container">
         <div className="row g-4">
-          <div className="col-lg-4 col-md-6">
+          <div className="col-lg-6 col-md-6">
             <h4 className="footer-title">فروشگاه قهوه</h4>
             <p className="mb-4">بهترین قهوه‌های دنیا را با ما تجربه کنید.</p>
             <div className="d-flex">
@@ -29,7 +29,7 @@ const Footer = () => {
               ))}
             </div>
           </div>
-          <div className="col-lg-4 col-md-6">
+          <div className="col-lg-6 col-md-6">
             <h4 className="footer-title">دسترسی سریع</h4>
             <ul className="list-unstyled">
               {quickLinks.map((link, index) => (
@@ -39,18 +39,10 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          <div className="col-lg-4 col-md-12">
-            <h4 className="footer-title">خبرنامه</h4>
-            <p className="mb-3">برای اطلاع از آخرین محصولات و تخفیف‌ها، در خبرنامه ما عضو شوید.</p>
-            <div className="input-group mb-3">
-              <input type="email" className="form-control" placeholder="ایمیل خود را وارد کنید" />
-              <button className="btn btn-light" type="button">عضویت</button>
-            </div>
-          </div>
         </div>
         <hr className="my-4" style={{borderColor: 'rgba(255, 255, 255, 0.1)'}} />
         <div className="text-center">
-          <p className="mb-0">© تمامی حقوق محفوظ است - فروشگاه قهوه 1402</p>
+          <p className="mb-0">© تمامی حقوق محفوظ است - فروشگاه قهوه 1404</p>
         </div>
       </div>
     </footer>
