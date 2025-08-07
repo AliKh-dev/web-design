@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --coffee-dark: #3c2a21;
+    --coffee-medium: #5c3d2e;
+    --coffee-light: #b85c38;
+    --coffee-cream: #e6c9a8;
+    --coffee-bg: #f8f3e9;
+}
+
+* {
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+body {
+    background-color: var(--coffee-bg);
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: var(--coffee-dark);
+}
+
+.hero {
+    background: linear-gradient(rgba(60, 42, 33, 0.8), rgba(60, 42, 33, 0.8)), 
+                url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.product-card {
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--coffee-medium) 0%, var(--coffee-dark) 100%);
+    color: white;
+    font-size: 3rem;
+    position: relative;
+}
+
+.coffee-image-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Product image styles */
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    transition: transform 0.3s ease;
+}
+
+.product-img:hover {
+    transform: scale(1.05);
+}
+
+.coffee-icon-large {
+    font-size: 4rem;
+    color: var(--coffee-cream);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cart-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+.cart-badge-large {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+/* Large product image for single product page */
+.large-product-image {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--coffee-medium) 0%, var(--coffee-dark) 100%);
+    color: white;
+    font-size: 8rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Large product image styles */
+.large-product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.large-product-img:hover {
+    transform: scale(1.02);
+}
+
+/* Products list view styles */
+.products-list .product-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.products-list .product-card {
+    flex-direction: row;
+    height: auto;
+}
+
+.products-list .product-image {
+    width: 200px;
+    height: 150px;
+    flex-shrink: 0;
+}
+
+.products-list .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.products-list .product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Loading spinner styles */
+.spinner-border.text-coffee {
+    color: var(--coffee-light) !important;
+}
+
+/* Error and success message styles */
+.alert-sm {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Form validation styles */
+.form-control.is-invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-control.is-valid {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+/* Product image fallback */
+.product-image .coffee-icon-large {
+    display: none;
+}
+
+.product-image .coffee-icon-large.show {
+    display: block;
+}
+
+/* Responsive image handling */
+@media (max-width: 768px) {
+    .products-list .product-image {
+        width: 120px;
+        height: 90px;
+    }
+    
+    .large-product-image {
+        height: 250px;
+        font-size: 4rem;
+    }
+    
+    .product-image {
+        height: 150px;
+        font-size: 2rem;
+    }
+    
+    .coffee-icon-large {
+        font-size: 3rem;
+    }
+}
+
+/* Small product image for cart items */
+.product-image-small {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--coffee-medium) 0%, var(--coffee-dark) 100%);
+    color: white;
+    font-size: 2rem;
+    border-radius: 8px;
+}
+
+.category-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 10;
+}
+
+.category-robusta {
+    background-color: #3c2a21;
+    color: white;
+}
+
+.category-arabica {
+    background-color: #5c3d2e;
+    color: white;
+}
+
+.category-mix {
+    background-color: #b85c38;
+    color: white;
+}
+
+.category-turkish {
+    background-color: #e6c9a8;
+    color: var(--coffee-dark);
+}
+
+.price-tag {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: var(--coffee-light);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 10;
+}
+
+.btn-coffee {
+    background-color: var(--coffee-dark);
+    border-color: var(--coffee-dark);
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-coffee:hover {
+    background-color: var(--coffee-medium);
+    border-color: var(--coffee-medium);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-outline-coffee {
+    color: var(--coffee-dark);
+    border-color: var(--coffee-dark);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-coffee:hover {
+    background-color: var(--coffee-dark);
+    border-color: var(--coffee-dark);
+    color: white;
+}
+
+.section-title {
+    color: var(--coffee-dark);
+    font-weight: 700;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--coffee-light);
+    border-radius: 2px;
+}
+
+.filter-btn {
+    background-color: transparent;
+    border: 2px solid var(--coffee-dark);
+    color: var(--coffee-dark);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin: 0 5px;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: var(--coffee-dark);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.footer {
+    background-color: var(--coffee-dark);
+    color: white;
+    padding: 40px 0 20px;
+}
+
+.footer-title {
+    color: var(--coffee-cream);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.footer-link {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.footer-link:hover {
+    color: var(--coffee-cream);
+    text-decoration: none;
+}
+
+.cart-item-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.cart-item-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.admin-form-card {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.admin-form-card .card-header {
+    background-color: var(--coffee-dark);
+    color: white;
+    border-bottom: none;
+    padding: 1.5rem;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    color: var(--coffee-medium);
+}
+
+.breadcrumb-item .btn-link {
+    color: var(--coffee-dark);
+    text-decoration: none;
+    padding: 0;
+}
+
+.breadcrumb-item .btn-link:hover {
+    color: var(--coffee-light);
+    text-decoration: underline;
+}
+
+.bg-coffee-light {
+    background-color: var(--coffee-light) !important;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.top-0 {
+    top: 0;
+}
+
+.start-100 {
+    left: 100%;
+}
+
+.translate-middle {
+    transform: translate(-50%, -50%);
+} 

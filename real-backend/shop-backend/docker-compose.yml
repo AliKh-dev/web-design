@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: shop-backend
+    restart: unless-stopped
+    ports:
+      - '3001:3001'
+    depends_on:
+      - mongo
+    environment:
+      - PORT=3001
+      - MONGO_URI=mongodb://mongo:27017/coffee-shop
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+
+volumes:
+  mongo-data:
