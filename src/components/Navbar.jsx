@@ -11,10 +11,27 @@ const Navbar = () => {
   const { cartItemCount } = useCart();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
 
   const handleLogout = () => {
+    setShowUserDropdown(false);
     logout();
   };
+
+  // Close dropdown when clicking outside
+  const handleClickOutside = (event) => {
+    if (showUserDropdown && !event.target.closest('.dropdown')) {
+      setShowUserDropdown(false);
+    }
+  };
+
+  // Add event listener for clicking outside
+  React.useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [showUserDropdown]);
 
   const openLoginModal = () => {
     setShowLoginModal(true);
@@ -92,17 +109,23 @@ const Navbar = () => {
               </button>
               
               {isAuthenticated ? (
-                <div className="dropdown">
-                  <button className="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                <div className="dropdown position-relative">
+                  <button 
+                    className="btn btn-light dropdown-toggle" 
+                    type="button" 
+                    onClick={() => setShowUserDropdown(!showUserDropdown)}
+                  >
                     <i className="bi bi-person-circle me-1"></i>
                     {user?.name || 'کاربر'}
                   </button>
-                  <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#profile">پروفایل</a></li>
-                    <li><a className="dropdown-item" href="#orders">سفارشات</a></li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li><button className="dropdown-item" onClick={handleLogout}>خروج</button></li>
-                  </ul>
+                  {showUserDropdown && (
+                    <ul className="dropdown-menu show position-absolute" style={{ top: '100%', right: '0', zIndex: 1000 }}>
+                      <li><a className="dropdown-item" href="#profile">پروفایل</a></li>
+                      <li><a className="dropdown-item" href="#orders">سفارشات</a></li>
+                      <li><hr className="dropdown-divider" /></li>
+                      <li><button className="dropdown-item" onClick={handleLogout}>خروج</button></li>
+                    </ul>
+                  )}
                 </div>
               ) : (
                 <div className="d-flex">

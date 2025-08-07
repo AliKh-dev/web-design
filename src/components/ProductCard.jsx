@@ -13,7 +13,7 @@ const ProductCard = ({ product }) => {
   // Get current quantity in cart for this product
   const getCurrentQuantity = () => {
     if (!cart || !cart.items) return 0;
-    const cartItem = cart.items.find(item => item.product._id === product.id);
+    const cartItem = cart.items.find(item => item.product._id === product._id);
     return cartItem ? cartItem.quantity : 0;
   };
 
@@ -26,7 +26,7 @@ const ProductCard = ({ product }) => {
 
     try {
       setIsAddingToCart(true);
-      await addToCart(product.id, 1);
+      await addToCart(product._id, 1);
       setMessage('محصول به سبد خرید اضافه شد');
       setTimeout(() => setMessage(''), 3000);
     } catch (error) {
@@ -39,7 +39,7 @@ const ProductCard = ({ product }) => {
   };
 
   const handleViewDetails = () => {
-    navigate(`/product/${product.id}`);
+    navigate(`/product/${product._id}`);
   };
 
   const currentQuantity = getCurrentQuantity();

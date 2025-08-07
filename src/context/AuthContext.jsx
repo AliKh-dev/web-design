@@ -79,6 +79,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     setError(null);
     localStorage.removeItem('authToken');
+    window.location.href = '/';
   };
 
   // Clear error
